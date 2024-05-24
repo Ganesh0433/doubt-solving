@@ -1,0 +1,189 @@
+#details{
+    display: flex;
+    font-size: 24px;
+    margin-top: 3px;
+
+   
+
+}
+#coins img{
+    margin-top: -10px;
+}
+#details img{
+    height: 40px;
+    width: 41px;
+    margin-left: 20px;
+
+
+}
+#details h3{
+    font-size: 19px;
+    margin-top: 5px;
+    color: white;
+    margin-left: 17px;
+    font-weight: normal;
+
+}
+#details span{
+    display: flex;
+    font-size: 24px;
+    margin-top: -4px;
+    color: white;
+    margin-left: 22px;
+
+}
+#details h4{
+    color: white;
+    font-size: 16px;
+    margin-left: 7px;
+    margin-top: 7px;
+    font-weight: normal;
+
+}
+#tags{
+    margin-top: 2px;
+    margin-left: 20px;
+    height: 43px;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-top: -23px;
+    display: flex;
+
+}
+
+#icon{
+    margin-left: 60px;
+}
+
+
+#icon img{
+    height:142.8px;
+    width:140px;
+   
+}
+#icon h3{
+    margin-top: 5px;
+    color:#0a66d5;
+    font-size: 32px;
+}
+#icon h3 span{
+    color:#3297ED;
+    margin-left: 6px;
+}
+#indetail{
+    padding: 20px;
+    position: relative;
+    position: absolute;
+    top: 25px;
+    left: 272px;
+    height: 600px;
+    width: 795px;
+    background-color: #151515;
+    border-radius: 40px;
+    padding-bottom: 30px;
+ 
+}
+#details{
+
+    display: flex;
+    font-size: 24px;
+    margin-top: 3px;
+
+
+}
+#details img{
+height: 30px;
+width: 30px;
+margin-left: 20px;
+}
+#details h3{
+font-size: 19px;
+margin-top: 4px;
+color: white;
+margin-left: 9px;
+font-weight: normal;
+
+}
+#details span{
+margin-top: -4px;
+color: white;
+margin-left: 6px;
+}
+#details h4{
+color: white;
+font-size: 16px;
+margin-left: 7px;
+margin-top: 7px;
+font-weight: normal;
+}
+#tags{
+margin-top: 0px;
+margin-left: 20px;
+
+height: 43px;
+width: -moz-fit-content;
+width: fit-content;
+padding-top: -23px;
+display: flex;
+
+}
+#tags #tag{
+font-size: 14px;
+height:fit-content;
+width: fit-content;
+background-color:#A1A9F8;
+padding: 5px;
+border-radius: 10px;
+color:white;
+margin-left: 5px;
+
+}
+#coins{
+    display: flex;
+    position: absolute;
+    top: 22px;
+    right: 54px;
+
+}
+#coins h4{
+    font-size: 18px;
+    font-weight: normal;
+    color: white;
+    margin-top: 4px;
+}
+#doubt{
+    height:500px;
+    width:750px;
+    padding: 20px;
+   
+}
+#doubt h2{
+    color: white;
+    font-weight: normal;
+    font-size: 34px;
+    margin-top: 0px;
+}
+#description p{
+    color: white;
+}
+#question h2{
+    color:white;
+    padding: 20px;
+    margin-top:-10px;
+}
+#description p{
+    color:white;
+    padding:20px;
+    margin-top:20px;
+}
+
+#inside button{
+    height: fit-content;
+    width: fit-content;
+    margin-left: 20px;
+    padding: 5px 10px;
+    background-color: #6132ed;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}

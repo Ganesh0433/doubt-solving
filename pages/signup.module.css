@@ -1,0 +1,58 @@
+/* signup.module.css */
+
+#signup {
+    
+    max-width: 400px;
+    margin: 253px 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #signup form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #signup input[type='text'] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #signup button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #signup button:hover {
+    background-color: #0056b3;
+  }
+  
+  #signup button:focus {
+    outline: none;
+  }
+  
+  #signup button + button {
+    margin-top: 10px;
+  }
+  
+  .link-button {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .link-button:hover {
+    text-decoration: underline;
+  }
+  #butto{
+    position: absolute;
+    top:10px;
+    right:30px;
+  }
+  

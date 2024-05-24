@@ -1,0 +1,95 @@
+#chat{
+    position: relative;
+    top: 41px;
+    border-radius: 20px;
+    left: 562px;
+    height: 600px;
+    width: 600px;
+    background-color: #151515;
+}
+#names{
+    
+    margin-left: -240px;
+    border-radius: 20px;
+    height:600px;
+    width:240px;
+    background-color: grey;
+}
+#chat #nav{
+    width: 100%;
+    height: 50px;
+    background-color: green;
+}
+#chat #messagein{
+    position: absolute;
+    bottom: 7px;
+    height: 30px;
+    width: 492px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    left:0;
+
+
+}
+#line{
+    position: absolute;
+    bottom: 81px;
+    margin-left: 25px;
+    height: 0.5px;
+    width: 540px;
+    background-color: white;
+}
+#chat button{
+    position: absolute;
+    bottom: 19px;
+    left: 521px;
+    height: 28px;
+    width: 68px;
+    margin: 5px;
+    padding: 7px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+
+
+}
+#messages{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 98px;
+    left: 24px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 430px;
+    padding: 20px;
+    width: 512px;
+   
+
+}
+#messages #message{
+    height: 20px;
+    padding: 6px 10px;
+    margin: 7px;
+    border-radius: 10px;
+    width: fit-content;
+    background-color: aqua;
+
+}
+#oppomessage{
+    display: flex;
+    justify-self: end;
+    height: 20px;
+    padding: 6px 10px;
+    margin: 7px;
+    text-wrap: nowrap;
+    margin-left: 428px;
+    border-radius: 10px;
+    width: fit-content;
+    background-color: rgb(35, 219, 50);
+
+}
