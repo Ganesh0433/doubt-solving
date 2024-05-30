@@ -71,6 +71,7 @@ function Doubtcreation() {
       console.error('Error:', error);
       alert('Error occurred while storing data.');
     }
+    router.push(`/dashboard?me=${me}`); 
   };
 
   const addTag = () => {

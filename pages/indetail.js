@@ -4,8 +4,10 @@ import { useRouter } from 'next/router';
 
 function Indetail() {
   const router = useRouter();
-  const { id } = router.query;
+  const { id,me,you } = router.query;
   console.log(id)
+  console.log("me in indetail : ",me)
+  console.log("you in indetail : ",you)
   const [questions, setQuestions] = useState([]);
   const [check, setcheck] = useState({});
   var j = 'ganw'
@@ -34,8 +36,58 @@ function Indetail() {
       fetchData();
     }
   }, [id]);
-
+  function getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  
+  const randomInt = getRandomInteger(11111, 9999);
+  const store=randomInt
   const handleAccept = async (questionId) => {
+    const option = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id:store                                          
+      })
+    };
+    try {
+      const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/ids/${me}&&${you}.json`, option);
+      if (res.ok) {
+        console.log("ids")
+      } else {
+        throw new Error('Failed to store data.');
+      }
+    
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error occurred while storing data.');
+    }
+  
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id:store                                          
+      })
+    };
+    
+    try {
+      const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/ids/${you}&&${me}.json`, options);
+      if (res.ok) {
+        console.log("ids")
+      } else {
+        throw new Error('Failed to store data.');
+      }
+    
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error occurred while storing data.');
+    }
+  
     try {
       const updatedQuestions = questions.map(question => {
         if (question.Id === questionId) {
@@ -64,6 +116,7 @@ function Indetail() {
     } catch (error) {
       console.error('Error:', error);
     }
+    router.push(`/dashboard?me=${me}`); 
   };
   
   

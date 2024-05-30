@@ -23,14 +23,14 @@
 #chat #messagein{
     position: absolute;
     bottom: 7px;
-    height: 30px;
-    width: 492px;
-    margin: 5px;
+    height: 20px;
+    width: 435px;
+    margin: 19px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     border: none;
-    left:0;
+    left: 0;
 
 
 }
@@ -44,52 +44,61 @@
 }
 #chat button{
     position: absolute;
-    bottom: 19px;
-    left: 521px;
-    height: 28px;
-    width: 68px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 24px;
+    left: 489px;
+    height: 34px;
+    width: 65px;
     margin: 5px;
-    padding: 7px;
+    padding: 6px;
     border-radius: 20px;
     outline: none;
     border: none;
 
-
 }
 #messages{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: column-reverse;
+  
     position: absolute;
     bottom: 98px;
     left: 24px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
-    height: 430px;
+    
+    max-height: 430px;
     padding: 20px;
     width: 512px;
    
 
 }
+
+#messages::-webkit-scrollbar{
+    width: 0;
+}
 #messages #message{
-    height: 20px;
+    max-height: 300px;
+    width: fit-content;
     padding: 6px 10px;
     margin: 7px;
     border-radius: 10px;
-    width: fit-content;
+    max-width: 180px;
     background-color: aqua;
 
 }
 #oppomessage{
     display: flex;
     justify-self: end;
-    height: 20px;
+    max-height: 300px;
     padding: 6px 10px;
     margin: 7px;
-    text-wrap: nowrap;
-    margin-left: 428px;
-    border-radius: 10px;
     width: fit-content;
+    margin-left: 304px;
+    border-radius: 10px;
+    max-width: 180px;
     background-color: rgb(35, 219, 50);
 
 }

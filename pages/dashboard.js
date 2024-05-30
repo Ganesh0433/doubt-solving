@@ -64,7 +64,7 @@ function Dashboard() {
         <div id={style.line}></div>
         <div id={style.issue}>
           {questions.map((question, index) => (
-            <Link href={`/indetail?id=${question.Id}`} key={index}>
+            <Link href={`/indetail?id=${question.Id}&me=${me}&you=${question.Username}`} key={index}>
               <div key={index} id={style.problem}>
                 <div id={style.details}>
                   <img src='doughtprofile.png' alt='profile' />
