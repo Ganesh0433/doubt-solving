@@ -99,7 +99,7 @@ function Indetail() {
   
       const acceptedQuestion = updatedQuestions.find(question => question.Id === questionId);
   
-      const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/UserData/Statuses/${id}.json`, {
+      const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/${me}/Statuses/${id}.json`, {
         method: 'PATCH', 
         headers: {
           'Content-Type': 'application/json'

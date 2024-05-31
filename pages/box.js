@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import style from './box.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-function Box({me}) {
+function Box() {
     const router = useRouter();
+
+    const {me}=router.query
 
     console.log("me in box  ",me)
     const [questions, setQuestions] = useState([]);
@@ -11,11 +13,11 @@ function Box({me}) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/UserData/Statuses/.json`);
+                const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/${me}/Statuses/.json`);
                 if (res.ok) {
                     const data = await res.json();
                     console.log("Fetched data:", data);
-        
+                 
                     const questionsArray = Object.keys(data).map(key => ({
                         Id: key,
                         ...data[key].updatedQuestions[0] 
@@ -28,8 +30,35 @@ function Box({me}) {
             } catch (error) {
                 console.error('Error:', error);
             }
-        };
-        
+        //     const option = {
+        //         method: 'POST',
+        //         headers: {
+        //           'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //           message: me,
+        //           Name
+        //         })
+        //       };
+        //       try {
+        //         const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/${me}&&${you}/${me}.json`, option);
+             
+        //         if (res.ok) {
+        //           console.log("ids")
+        //         } else {
+        //           throw new Error('Failed to store data.');
+        //         }
+        //         if (respons.ok) {
+          
+        //         } else {
+        //           throw new Error('Failed to store data.');
+        //         }
+        //       } catch (error) {
+        //         console.error('Error:', error);
+        //         alert('Error occurred while storing data.');
+        //       }
+            
+         };
         fetchData();
     }, []);
 

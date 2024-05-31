@@ -87,7 +87,17 @@
     border-radius: 10px;
     max-width: 180px;
     background-color: aqua;
+    display: flex;
+    justify-self: end;
 
+}
+#message h5{
+    margin: 0;
+    font-size: 11px;
+    font-weight: normal;
+    color: grey;
+    margin-left: 8px;
+    margin-top: 23px;
 }
 #oppomessage{
     display: flex;
@@ -101,4 +111,12 @@
     max-width: 180px;
     background-color: rgb(35, 219, 50);
 
+}
+#oppomessage h5{
+    margin: 0;
+    font-size: 11px;
+    font-weight: normal;
+    color: grey;
+    margin-left: 8px;
+    margin-top: 23px;
 }

@@ -31,14 +31,10 @@ function Menu() {
     {questions.map((question, index) => (
             <Link href={`/indetail?id=${question.Id}`} key={index}>
               <div key={index} id={style.problem}>
-              
-              
                 <div id={style.tags}>
                   {question.Tags && question.Tags.map((tag, index) => (
                     <div key={index} id={style.tag}><h3>#{tag}</h3></div>
                   ))}
-                
-               
                 </div>
               </div>
             </Link>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Box from './box';
 
 import { useRouter } from 'next/router';
+import { notFound } from 'next/navigation';
 
 function Dashboard() {
 
@@ -27,11 +28,27 @@ function Dashboard() {
     const fetchData = async () => {
       try {
         const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/UserData/question.json`);
-        if (res.ok) {
+        const response = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/${me}/question.json`);
+
+        if (res.ok && response.ok) {
+          const rdata = await response.json();
+          console.log("question rdata ", rdata);
+          const rquestionsArray = Object.keys(rdata);
+          console.log("inside res question rarray ", rquestionsArray);
+
           const data = await res.json();
-          const questionsArray = Object.values(data).flatMap(item => Object.values(item));
+          console.log("question data ", data);
+
+          let questionsArray = [];
+          Object.keys(data).forEach((item) => {
+            if (!rquestionsArray.includes(item)) {
+              questionsArray = questionsArray.concat(Object.values(data[item]));
+            }
+          });
+
+          console.log("question array ", questionsArray);
           setQuestions(questionsArray);
-          console.log(questions)
+          console.log("questions are questions", questions);
         } else {
           throw new Error('Failed to fetch data.');
         }
@@ -39,8 +56,10 @@ function Dashboard() {
         console.error('Error:', error);
       }
     };
+
     fetchData();
-  }, []);
+  }, [me]);
+
 
   return (
     <>
