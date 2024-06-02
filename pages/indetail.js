@@ -99,6 +99,7 @@ function Indetail() {
   
       const acceptedQuestion = updatedQuestions.find(question => question.Id === questionId);
   
+      
       const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/${me}/Statuses/${id}.json`, {
         method: 'PATCH', 
         headers: {
@@ -106,7 +107,6 @@ function Indetail() {
         },
         body: JSON.stringify({updatedQuestions})
       });
-  
       if (res.ok) {
         console.log('Question status updated successfully.');
         setQuestions(updatedQuestions); 

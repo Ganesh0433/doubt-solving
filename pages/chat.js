@@ -3,11 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import style from './chat.module.css'
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import InfiniteScroller from 'react-infinite-scroller';
 import dayjs from 'dayjs';
 
 
 function Chat() {
+  const [questions, setQuestions] = useState([]);
+
   const [val, setval] = useState([]);
   const [lent, setlent] = useState();
   const router = useRouter();
@@ -16,7 +19,7 @@ function Chat() {
 
 
 
-   
+
   console.log("you is  ", you)
   const [user, setUser] = useState({
     Name: '',
@@ -26,7 +29,7 @@ function Chat() {
 
   const [message, setmessage] = useState([]);
   const [mess, setmess] = useState([]);
- 
+
 
 
   console.log(message)
@@ -41,14 +44,14 @@ function Chat() {
   const handleSubmit = async (e) => {
 
     const today = dayjs().format('dddd'); // 'dddd' gives the full name of the day
-  
+
     const currentDate = new Date();
-    console.log("present date ",currentDate)
+    console.log("present date ", currentDate)
     const hours = currentDate.getHours();
     const minutes = currentDate.getMinutes();
-    var CurrentTime=`${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+    var CurrentTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
     const tagmessage = <div id={style.message}>{user.Name}
-    <h5>{CurrentTime}</h5></div>
+      <h5>{CurrentTime}</h5></div>
     setmessage([...message, tagmessage]);
 
     e.preventDefault();
@@ -62,12 +65,12 @@ function Chat() {
         Name,
         Email,
         PhoneNumber,
-        currentDate:currentDate,
-        CurrentTime:CurrentTime,
-        CurrentDay:today
+        currentDate: currentDate,
+        CurrentTime: CurrentTime,
+        CurrentDay: today
       })
     };
- 
+
     const option = {
       method: 'POST',
       headers: {
@@ -76,12 +79,12 @@ function Chat() {
       body: JSON.stringify({
         message: me,
         Name,
-        currentDate:currentDate,
-        CurrentTime:CurrentTime,
-        CurrentDay:today
+        currentDate: currentDate,
+        CurrentTime: CurrentTime,
+        CurrentDay: today
       })
     };
-    user.Name=''
+    user.Name = ''
 
     try {
       const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/${me}&&${you}/${me}.json`, options);
@@ -101,62 +104,62 @@ function Chat() {
       alert('Error occurred while storing data.');
     }
   };
-  
- 
+
+
   useEffect(() => {
+     setInterval(async () => {
+    
 
-    setInterval(async() => {
+      try {
 
-     
-        try {
-
-          console.log("inside try me is ", me)
-          const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/${you}&&${me}/${you}.json`)
-          if (res.ok) {
-            const data = await res.json();
-            if(data){
+        console.log("inside try me is ", me)
+        const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/${you}&&${me}/${you}.json`)
+        if (res.ok) {
+          const data = await res.json();
+          if (data) {
             var len = Object.keys(data).length;
             setlent(len)
-            const lkey=Object.keys(data)
+            const lkey = Object.keys(data)
             console.log("len is ", len)
             const lastKey = Object.keys(data).pop();
             const lastName = data[lastKey].Name;
             const lastTime = data[lastKey].CurrentTime;
             const lastDate = data[lastKey].currentDate;
-           
-         
+
+
             console.log("fetched : ", lastName)
-            
-            if (len > i){
+
+            if (len > i) {
               i = len
+              console.log("iam inside if")
               const omessage =
                 <div id={style.oppomessage}>
                   {lastName}
-               <h5>{lastTime}</h5>
+                  <h5>{lastTime}</h5>
                 </div>
               setmessage(prevMessage => [...prevMessage, omessage]);
-            } 
+            }
 
           }
 
 
-          } else {
-            throw new Error('Failed to fetch data.');
-          }
-        } catch (error) {
-
-          console.error('Error:', error);
-
+        } else {
+          throw new Error('Failed to fetch data.');
         }
-    
+      } catch (error) {
+
+        console.error('Error:', error);
+
+      }
+
 
 
     }, 7000)
-  
+
 
   }, []);
   const currentDate = new Date();
-  console.log("present date ",currentDate)
+  console.log("present date ", currentDate)
   useEffect(() => {
     const ids = async () => {
 
@@ -164,39 +167,39 @@ function Chat() {
         const idres = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/ids/${you}&&${me}.json`);
         if (idres.ok) {
           const idi = await idres.json()
-          if(idi){
-          console.log("idi is ", idi)
-          const l = Object.values(idi)
-         
-          var setvalue = l[0].id
-          console.log("l value is ", setvalue)
-          setval(setvalue)
+          if (idi) {
+            console.log("idi is ", idi)
+            const l = Object.values(idi)
 
-          const response = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/${setvalue}.json?timestamp=${Date.now()}`);
-          if (response.ok) {
-            const tdata = await response.json();
-          if(tdata){
-            const wmessages = Object.values(tdata);
-           
-            console.log("whole data inside l: ", wmessages);
+            var setvalue = l[0].id
+            console.log("l value is ", setvalue)
+            setval(setvalue)
 
-            const newMessages = wmessages.map((item, index) => {
-              if (item.message == me) {
-                return <div key={index} id={style.message}>{item.Name}
-                 <h5>{item.CurrentTime}</h5></div>;
-              } else if (item.message == you) {
-                return <div key={index} id={style.oppomessage}>{item.Name}
-                 <h5>{item.CurrentTime}</h5></div>;
+            const response = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/${setvalue}.json?timestamp=${Date.now()}`);
+            if (response.ok) {
+              const tdata = await response.json();
+              if (tdata) {
+                const wmessages = Object.values(tdata);
+
+                console.log("whole data inside l: ", wmessages);
+
+                const newMessages = wmessages.map((item, index) => {
+                  if (item.message == me) {
+                    return <div key={index} id={style.message}>{item.Name}
+                      <h5>{item.CurrentTime}</h5></div>;
+                  } else if (item.message == you) {
+                    return <div key={index} id={style.oppomessage}>{item.Name}
+                      <h5>{item.CurrentTime}</h5></div>;
+                  }
+                  return null;
+                }).filter(Boolean);
+
+                setmess(newMessages);
               }
-              return null;
-            }).filter(Boolean);
 
-            setmess(newMessages);
+              console.log("after set idval is : ", val)
+            }
           }
-         
-          console.log("after set idval is : ", val)
-        }
-      }
         } else {
           throw new Error('Failed to store data.');
         }
@@ -209,30 +212,54 @@ function Chat() {
     ids()
   }, [me, you]);
 
-console.log("messages are ", message)
+  console.log("messages are ", message)
 
-var firstOppomessageSkipped = false;
+  var firstOppomessageSkipped = false;
   const filteredMessages = message.filter(messag => {
     if (messag.props.id.includes('oppomessage')) {
       if (!firstOppomessageSkipped) {
         firstOppomessageSkipped = true;
-        return false; 
+        return false;
       }
     }
-    return true; 
+    return true;
   });
   var something;
-  if(lent>1){
-    if(lent==2){
+  if (lent > 1) {
+    if (lent == 2) {
       router.push(`/chat?me=${me}&you=${you}`)
-    
-    }
-   
-    something=filteredMessages
-  }else{
-    something=message
-  }
 
+    }
+
+    something = filteredMessages
+  } else {
+    something = message
+  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/${me}/Statuses/.json`);
+        if (res.ok) {
+          const data = await res.json();
+          console.log("Fetched data:", data);
+
+          const questionsArray = Object.keys(data).map(key => ({
+            Id: key,
+            ...data[key].updatedQuestions[0]
+          }));
+          setQuestions(questionsArray);
+          console.log('Questions array:', questionsArray);
+        } else {
+          throw new Error('Failed to fetch data.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+
+
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -242,7 +269,16 @@ var firstOppomessageSkipped = false;
 
       <div id={style.chat}>
         <div id={style.names}>
-             
+          {questions.map((question, index) => (
+           <Link href={`/chat?me=${me}&you=${question.Username}`} key={index}>
+           
+            <div id={style.details}>
+              <img src='doughtprofile.png' alt='profile' />
+              <h3>{question.Username}</h3>
+            </div>
+            </Link>
+
+          ))}
         </div>
         <div id={style.line}></div>
 

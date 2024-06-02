@@ -30,33 +30,7 @@ function Box() {
             } catch (error) {
                 console.error('Error:', error);
             }
-        //     const option = {
-        //         method: 'POST',
-        //         headers: {
-        //           'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify({
-        //           message: me,
-        //           Name
-        //         })
-        //       };
-        //       try {
-        //         const res = await fetch(`https://acehack-65f02-default-rtdb.firebaseio.com/messages/${me}&&${you}/${me}.json`, option);
-             
-        //         if (res.ok) {
-        //           console.log("ids")
-        //         } else {
-        //           throw new Error('Failed to store data.');
-        //         }
-        //         if (respons.ok) {
-          
-        //         } else {
-        //           throw new Error('Failed to store data.');
-        //         }
-        //       } catch (error) {
-        //         console.error('Error:', error);
-        //         alert('Error occurred while storing data.');
-        //       }
+     
             
          };
         fetchData();
