@@ -15,7 +15,7 @@
     width:240px;
     background-color: grey;
 }
-#names #details{
+#details{
     margin: 13px 15px;   
      display: flex;
     height: 53px;
